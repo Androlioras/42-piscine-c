@@ -6,7 +6,7 @@
 /*   By: pribault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 17:41:58 by pribault          #+#    #+#             */
-/*   Updated: 2016/08/21 16:17:46 by pribault         ###   ########.fr       */
+/*   Updated: 2016/08/21 21:05:31 by pribault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,26 @@
 
 int		main(int argc, char **argv)
 {
+	int		i;
 	int		len;
 	int		test;
 	char	*line;
+	char	*temp;
 	char	**array;
 
 	len = 0;
-	line = (char*)malloc(sizeof(char) * SIZE);
-	line[len] = 32;
-	while (len < SIZE && read(0, &line[len], 1) == 1)
+	line = (char*)malloc(sizeof(char) * len + 2);
+	while (read(0, &line[len], 1))
+	{
+		line[len + 1] = '\0';
+		temp = line;
 		len++;
+		line = (char*)malloc(sizeof(char) * len + 2);
+		i = -1;
+		while (temp[++i])
+			line[i] = temp[i];
+		free(temp);
+	}
 	line[len] = '\0';
 	check(line);
 	return (0);
