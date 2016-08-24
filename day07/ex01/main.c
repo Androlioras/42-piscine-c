@@ -6,11 +6,12 @@
 /*   By: pribault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/17 16:01:41 by pribault          #+#    #+#             */
-/*   Updated: 2016/08/17 16:06:54 by pribault         ###   ########.fr       */
+/*   Updated: 2016/08/24 09:45:37 by pribault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 int		*ft_range(int min, int max);
 
@@ -21,13 +22,15 @@ int		main(void)
 	int		max;
 	int		*string;
 
-	min = -10;
-	max = 11;
+	min = -1;
+	max = 2147483647;
 	string = ft_range(min, max);
 	i = 0;
-	while (i < max - min)
+	printf("%p\n", string);
+	/*while (i < max - min && string != NULL)
 	{
 		printf("%d ", string[i]);
 		i++;
-	}
+	}*/
+	free(string);
 }

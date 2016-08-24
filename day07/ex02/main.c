@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pribault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/17 16:07:30 by pribault          #+#    #+#             */
-/*   Updated: 2016/08/17 16:22:08 by pribault         ###   ########.fr       */
+/*   Created: 2016/08/21 17:47:26 by pribault          #+#    #+#             */
+/*   Updated: 2016/08/24 08:37:52 by pribault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,19 @@ int		main(void)
 	int		size;
 	int		i;
 
-	range = malloc(sizeof(int*) * 1);
-	min = -10;
-	max = 11;
+	range = (int**)malloc(sizeof(int*) * 1);
+	min = 42;
+	max = 43;
 	size = ft_ultimate_range(range, min, max);
 	i = 0;
-	printf("%d ", size);
-	while (i < max - min)
+	printf("%p %d\n", *range, size);
+	if (!range)
+		printf("NULL");
+	/*while (i < max - min && range != NULL)
 	{
 		printf("%d ", range[0][i]);
 		i++;
-	}
+	}*/
+	free(range);
 	return (0);
 }

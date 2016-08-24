@@ -6,7 +6,7 @@
 /*   By: pribault <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 16:43:20 by pribault          #+#    #+#             */
-/*   Updated: 2016/08/17 16:06:36 by pribault         ###   ########.fr       */
+/*   Updated: 2016/08/24 09:45:17 by pribault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,23 @@
 
 int		*ft_range(int min, int max)
 {
+	long	i;
 	int		*array;
-	int		i;
+	long	a;
+	long	b;
+	long	size;
 
-	if (max > min)
+	i = 0;
+	a = min;
+	b = max;
+	size = b - a;
+	array = (int*)malloc(sizeof(int) * size);
+	while (i < size && array != NULL && size <= 2147483647)
 	{
-		array = malloc(max - min);
-		i = 0;
-		while (i < max - min)
-		{
-			array[i] = min + i;
-			i++;
-		}
+		array[i] = min + i;
+		i++;
 	}
-	else
-		array = 0;
+	if (max <= min || size > 2147483647)
+		array = NULL;
 	return (array);
 }
